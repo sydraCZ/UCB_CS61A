@@ -354,13 +354,13 @@ def final_strategy(score, opponent_score):
         return 0
     if sus_strategy(score, opponent_score, threshold) == 0:
         return 0
-    if threshold >= 11:
-        if boar_strategy(score, opponent_score) == 0:
+    if threshold > 11:
+        if boar_strategy(score, opponent_score, 11) == 0:
             return 0
-        if sus_strategy(score, opponent_score) == 0:
+        if sus_strategy(score, opponent_score, 11) == 0:
             return 0
     elif threshold == 2:
-        return 1 # if choose 2, probability from 5/6 down to (5/6)^2. [1,x] [x,1] [1,1] x!=1
+        return 1 # if choose 2, probability down from 5/6 to (5/6)^2. [1,x] [x,1] [1,1] x!=1
     # elif threshold == 3:
     #     # if choose 1, probability = 4/6. min={3}
     #     # if choose 2, probability = (5/6)^2. min={2+2}
